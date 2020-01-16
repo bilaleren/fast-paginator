@@ -50,7 +50,6 @@ This is used only to go to the previous and next page.
 ```javascript
 import FastPaginator from 'fast-paginator';
 
-
 const paginator = new FastPaginator(100);
 
 console.log(paginator.simplePaginate()); // return < > style buttons.
@@ -60,7 +59,6 @@ console.log(paginator.simplePaginate()); // return < > style buttons.
 
 ```javascript
 import FastPaginator from 'fast-paginator';
-
 
 const paginator = new FastPaginator(100);
 
