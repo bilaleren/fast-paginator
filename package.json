@@ -1,0 +1,18 @@
+{
+  "name": "fast-paginator",
+  "version": "1.0.0",
+  "description": "",
+  "url": "https://github.com/bilaleren/fast-paginator",
+  "main": "src/FastPaginator.js",
+  "scripts": { },
+  "repository": { "type":"git", "url":"git://github.com/bilaleren/fast-paginator.git" },
+  "keywords": [
+    "paginator",
+    "paginate",
+    "js paginate",
+    "pages"
+  ],
+  "types": "./types/FastPaginator.d.ts",
+  "author": "Bilal Eren <bilal@webnoi.com>",
+  "license": "MIT"
+}
