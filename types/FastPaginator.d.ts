@@ -13,12 +13,8 @@ declare interface FastPaginatorPagesItem {
     isCurrent?: boolean
 }
 
-declare type FastPaginatorIncludesKeys<T> = {
-    [P in keyof T]: T[P]
-}
-
 declare interface FastPaginatorOptions {
-    include?: FastPaginatorIncludesKeys<FastPaginatorIncludes>
+    include?: FastPaginatorIncludes
     pageName?: string
     nextPageText?: string
     prevPageText?: string
