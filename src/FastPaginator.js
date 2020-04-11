@@ -105,7 +105,7 @@ class FastPaginator {
             return parseInt(currentPage) || 1;
         }
 
-        return parseInt(url.searchParams.get(this.getOption('pageName', 'page'))) || 1;
+        return parseInt(url.searchParams.get(this.getOption('pageName')) || '1');
     }
 
     setItemsPerPage(page) {

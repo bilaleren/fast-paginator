@@ -1,6 +1,6 @@
 {
   "name": "fast-paginator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Javascript pagination plugin.",
   "url": "https://github.com/bilaleren/fast-paginator",
   "main": "src/FastPaginator.js",
