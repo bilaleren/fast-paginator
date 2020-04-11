@@ -25,16 +25,16 @@ class FastPaginator {
             prevPageText: '<span class="fa fa-angle-left"></span>',
             firstPageText: '<span class="fa fa-angle-double-left"></span>',
             lastPageText: '<span class="fa fa-angle-double-right"></span>',
-            prevPageTmpl: '<li class="page-item"><a href="%url" class="page-link">%text</a></li>',
-            nextPageTmpl: '<li class="page-item"><a href="%url" class="page-link">%text</a></li>',
+            prevPageTmpl: '<li class="page-item"><a href=":url" class="page-link">:text</a></li>',
+            nextPageTmpl: '<li class="page-item"><a href=":url" class="page-link">:text</a></li>',
             disabledPageTmpl: '<li class="disabled page-item"><a href="javascript:void(0);" tabindex="-1" class="page-link">...</a></li>',
-            linksTmpl: '<li class="page-item"><a href="%url" class="page-link">%num</a></li>',
-            activePageTmpl: '<li class="page-item active"><a href="javascript:void(0);" class="page-link">%num</a></li>',
-            firstPageTmpl: '<li class="page-item"><a href="%url" class="page-link">%text</a></li>',
-            lastPageTmpl: '<li class="page-item"><a href="%url" class="page-link">%text</a></li>',
+            linksTmpl: '<li class="page-item"><a href=":url" class="page-link">:num</a></li>',
+            activePageTmpl: '<li class="page-item active"><a href="javascript:void(0);" class="page-link">:num</a></li>',
+            firstPageTmpl: '<li class="page-item"><a href=":url" class="page-link">:text</a></li>',
+            lastPageTmpl: '<li class="page-item"><a href=":url" class="page-link">:text</a></li>',
             template: `<nav aria-label="Pagination">
                           <ul class="pagination">
-                             %links
+                             :links
                           </ul>
                        </nav>`.trim()
         };
@@ -45,7 +45,7 @@ class FastPaginator {
 
         self.totalItems = totalItems || 0;
         self.itemsPerPage = self.maxPageToShow = itemsPerPage || 5;
-        self.urlPattern = urlPattern || '?page=%num';
+        self.urlPattern = urlPattern || '?page=:num';
         self.numPages = 0;
         self.currentPage = currentPage;
 
@@ -380,7 +380,7 @@ class FastPaginator {
 
     getPageUrl(pageNum) {
         return replaceArgs(this.getUrlPattern(), {
-            '%num': pageNum
+            ':num': pageNum
         });
     }
 
@@ -406,9 +406,9 @@ class FastPaginator {
         const self = this;
 
         return replaceArgs(self.getFirstPageTmpl(), {
-            '%url': self.getFirstPageUrl() || '',
-            '%num': self.getFirstPage() || self.getCurrentPage(),
-            '%text': self.getFirstPageText()
+            ':url': self.getFirstPageUrl() || '',
+            ':num': self.getFirstPage() || self.getCurrentPage(),
+            ':text': self.getFirstPageText()
         });
     }
 
@@ -416,9 +416,9 @@ class FastPaginator {
         const self = this;
 
         return replaceArgs(self.getPrevPageTmpl(), {
-            '%url': self.getPrevPageUrl() || '',
-            '%num': self.getPrevPage() || self.getCurrentPage(),
-            '%text': self.getPrevPageText()
+            ':url': self.getPrevPageUrl() || '',
+            ':num': self.getPrevPage() || self.getCurrentPage(),
+            ':text': self.getPrevPageText()
         });
     }
 
@@ -426,9 +426,9 @@ class FastPaginator {
         const self = this;
 
         return replaceArgs(self.getLastPageTmpl(), {
-            '%url': self.getLastPageUrl() || '',
-            '%num': self.getLastPage() || self.getNumPages(),
-            '%text': self.getLastPageText()
+            ':url': self.getLastPageUrl() || '',
+            ':num': self.getLastPage() || self.getNumPages(),
+            ':text': self.getLastPageText()
         });
     }
 
@@ -436,9 +436,9 @@ class FastPaginator {
         const self = this;
 
         return replaceArgs(self.getNextPageTmpl(), {
-            '%url': self.getNextPageUrl() || '',
-            '%num': self.getNextPage() || self.getCurrentPage(),
-            '%text': self.getNextPageText()
+            ':url': self.getNextPageUrl() || '',
+            ':num': self.getNextPage() || self.getCurrentPage(),
+            ':text': self.getNextPageText()
         });
     }
 
@@ -452,8 +452,8 @@ class FastPaginator {
 
             if(url) {
                 html += replaceArgs((isCurrent ? self.getActivePageTmpl() : self.getLinksTmpl()), {
-                    '%url': url,
-                    '%num': num
+                    ':url': url,
+                    ':num': num
                 });
             } else {
                 html += self.getDisabledPageTmpl();
@@ -493,7 +493,7 @@ class FastPaginator {
 
         if(include.template && self.getTemplate()) {
             html = replaceArgs(self.getTemplate(), {
-                '%links': html
+                ':links': html
             });
         }
 
@@ -504,9 +504,11 @@ class FastPaginator {
         const self = this;
 
         self.setOption({
-            links: false,
-            firstPage: false,
-            lastPage: false
+            include: {
+                links: false,
+                firstPage: false,
+                lastPage: false
+            }
         });
 
         return self.toString();
@@ -516,15 +518,15 @@ class FastPaginator {
         const self = this;
 
         return replaceArgs(self.getTemplate(), {
-            '%prevPageLink': self.getPrevPageLink(),
-            '%firstPageLink': self.getFirstPageLink(),
-            '%nextPageLink': self.getNextPageLink(),
-            '%lastPageLink': self.getLastPageLink(),
-            '%links': self.getLinks(),
-            '%prevPageUrl': self.getPrevPageUrl() || '',
-            '%nextPageUrl': self.getNextPageUrl() || '',
-            '%firstPageUrl': self.getFirstPageUrl() || '',
-            '%currentPage': self.getCurrentPage()
+            ':prevPageLink': self.getPrevPageLink(),
+            ':firstPageLink': self.getFirstPageLink(),
+            ':nextPageLink': self.getNextPageLink(),
+            ':lastPageLink': self.getLastPageLink(),
+            ':links': self.getLinks(),
+            ':prevPageUrl': self.getPrevPageUrl() || '',
+            ':nextPageUrl': self.getNextPageUrl() || '',
+            ':firstPageUrl': self.getFirstPageUrl() || '',
+            ':currentPage': self.getCurrentPage()
         });
     }
 

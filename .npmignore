@@ -3,5 +3,6 @@
 .settings
 .idea
 *.iml
+*.html
 node_modules
 tmp

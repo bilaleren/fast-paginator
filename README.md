@@ -63,11 +63,11 @@ import FastPaginator from 'fast-paginator';
 const paginator = new FastPaginator(100);
 
 paginator.setTemplate(`<div aria-label="Pagination Navigation" role="navigation" class="ui pagination menu">
-                             %firstPageLink
-                             %prevPageLink 
-                             %links
-                             %nextPageLink
-                             %lastPageLink
+                             :firstPageLink
+                             :prevPageLink 
+                             :links
+                             :nextPageLink
+                             :lastPageLink
                        </div>`);
 
 console.log(paginator.templatePaginate());
@@ -82,7 +82,7 @@ const paginator = new FastPaginator(100);
 
 paginator.setOption({
     template: `<div aria-label="Pagination Navigation" role="navigation" class="ui pagination menu">
-                   %links
+                   :links
                </div>`.trim(),
     firstPageText: '«',
     lastPageText: '»',
@@ -91,39 +91,39 @@ paginator.setOption({
     firstPageTmpl: `<a aria-current="false"
                        aria-disabled="false"
                        tabindex="0"
-                       value="%num"
+                       value=":num"
                        aria-label="First item"
                        type="firstItem"
-                       class="item">%text</a>`,
+                       class="item">:text</a>`,
     lastPageTmpl: ` <a
                        aria-current="false"
                        aria-disabled="false"
                        tabindex="0"
-                       value="%num"
+                       value=":num"
                        aria-label="Last item"
                        type="lastItem"
                        class="item">
-                       %text
+                       :text
                      </a>`,
    nextPageTmpl: `<a
                       aria-current="false"
                       aria-disabled="false"
                       tabindex="0"
-                      value="%num"
+                      value=":num"
                       aria-label="Next item"
                       type="nextItem"
                       class="item">
-                      %text
+                      :text
                     </a>`,
    prevPageTmpl: `<a
                       aria-current="false"
                       aria-disabled="false"
                       tabindex="0"
-                      value="%num"
+                      value=":num"
                       aria-label="Previous item"
                       type="prevItem"
                       class="item"
-                        %text
+                        :text
                     </a>`,
    disabledPageTmpl: `<a
                           aria-current="false"
@@ -134,17 +134,17 @@ paginator.setOption({
                           class="item">
                           ...
                         </a>`,
-   linksTmpl: `<a aria-current="false" aria-disabled="false" tabindex="0" value="%num" type="pageItem" class="item">
-                   %num
+   linksTmpl: `<a aria-current="false" aria-disabled="false" tabindex="0" value=":num" type="pageItem" class="item">
+                   :num
                  </a>`,
    activePageTmpl: `<a
                         aria-current="true"
                         aria-disabled="false"
                         tabindex="0"
-                        value="%num"
+                        value=":num"
                         type="pageItem"
                         class="active item">
-                        %num
+                        :num
                       </a>`
 });
 ```
