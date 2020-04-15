@@ -56,10 +56,6 @@ declare class FastPaginator {
 
     getTotalItems(): number
 
-    setRootTmpl(tmpl: string): this
-
-    getRootTmpl(): string
-
     setNextPageText(text: string): this
 
     getNextPageText(): string
@@ -128,7 +124,7 @@ declare class FastPaginator {
 
     setTemplate(template: string): this
 
-    getPages(): Array<FastPaginatorPagesItem>
+    getPages(): FastPaginatorPagesItem[]
 
     getPageUrl(pageNum: number): string
 
@@ -168,4 +164,4 @@ declare class FastPaginator {
 
 }
 
-export = FastPaginator;
+export = FastPaginator
